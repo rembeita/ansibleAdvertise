@@ -21,5 +21,8 @@ Currently operative version is Ubuntu 14.04 and Ubuntu 16.04
 - Test files in Nginx Root (info.php and memcached.php)
 - Added user for administration: advsupport
 
-# Installation procedure
-ansible-playbook advbook.yml
+# Installation procedure Ubuntu 14.04
+ansible-playbook advbook-14.04.yml
+
+# Installation procedure Ubuntu 16.04
+ansible-playbook advbook-16.04.yml
