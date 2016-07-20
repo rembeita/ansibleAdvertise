@@ -1,8 +1,4 @@
 [advertise]
-#84.39.46.26 ansible_ssh_private_key_file=./cloud.key
-#84.39.46.76 ansible_ssh_private_key_file=./cloud.key
-#84.39.48.122 ansible_ssh_private_key_file=./cloud.key
-#84.39.48.127 ansible_ssh_private_key_file=./cloud.key
 149.202.180.11 ansible_ssh_private_key_file=./adver.key
-149.202.180.109 nsible_ssh_private_key_file=./adver.key
 149.202.180.108 ansible_ssh_private_key_file=./adver.key
+149.202.180.109 ansible_ssh_private_key_file=./adver.key

@@ -2,14 +2,14 @@
 # tasks file for advertise
 - name: Update repo and install Nginx
   apt: name=nginx update_cache=yes
-- name: Install php5-fpm
-  apt: name=php5-fpm state=present
-- name: Install php5-curl
-  apt: name=php5-curl state=present
+- name: Install php-fpm
+  apt: name=php7.0-fpm state=present
+- name: Install php-curl
+  apt: name=php-curl state=present
 - name: Install Mysql
-  apt: name=php5-mysql state=present
+  apt: name=php-mysql state=present
 - name: Install Php Memcache
-  apt: name=php5-memcache state=present
+  apt: name=php-memcache state=present
 - name: Install Memcache
   apt: name=memcached state=present
 - name: Install curl
@@ -28,3 +28,7 @@
   copy: src=default dest=/etc/nginx/sites-available mode=0644
 - name: restart Nginx
   service: name=nginx state=restarted
+- name: Copy info.php for test purpose
+  copy: src=info.php dest=/usr/share/nginx/html mode=0644
+- name: Copy memcached.php for test purpose
+  copy: src=memcached.php dest=/usr/share/nginx/html mode=0644
