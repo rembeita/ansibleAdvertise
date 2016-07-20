@@ -19,16 +19,20 @@
 - name: Start Memcached Service
   service: name=memcached state=started enabled=yes
 - name: Copy sshd
-  copy: src=sshd_config dest=/etc/ssh/sshd_config mode=0644
+  copy: src=sshd_config dest=/etc/ssh/sshd_config mode=0644 backup=yes
 - name: restart sshd
   service: name=ssh state=restarted
 - name: Generating User
   user: name=advsupport shell=/bin/bash comment="Support" uid=1040 group=admin password=$6$9og9Y7qjbGv$uFIc6VgsQvlYP9rPovkT7UKiVe5xSyVdEXQxhl2VQFPZj5k8huvnQOIWKj/p4t9gZ2CtJqGyBhJRnjIcq1RSz1
 - name: Copy Nginx Configuration
-  copy: src=default dest=/etc/nginx/sites-available mode=0644
+  copy: src=default dest=/etc/nginx/sites-available/default mode=0644 backup=yes
 - name: restart Nginx
   service: name=nginx state=restarted
 - name: Copy info.php for test purpose
-  copy: src=info.php dest=/usr/share/nginx/html mode=0644
+  copy: src=info.php dest=/usr/share/nginx/html/info.php mode=0644 backup=yes
 - name: Copy memcached.php for test purpose
-  copy: src=memcached.php dest=/usr/share/nginx/html mode=0644
+  copy: src=memcached.php dest=/usr/share/nginx/html/memcached.php mode=0644 backup=yes
+- name: Copy php.ini for PHP Configuration
+  copy: src=php.ini dest=/etc/php/7.0/fpm/php.ini mode=0644 backup=yes
+- name: restart php fpm
+  service: name=php7.0-fpm state=restarted
