@@ -1,0 +1,7 @@
+- name: deployrole
+  hosts: advertise
+  remote_user: ubuntu
+  become: yes
+ 
+  roles:
+  - advertise
