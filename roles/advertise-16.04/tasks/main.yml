@@ -1,0 +1,30 @@
+---
+# tasks file for advertise
+- name: Update repo and install Nginx
+  apt: name=nginx update_cache=yes
+- name: Install php5-fpm
+  apt: name=php5-fpm state=present
+- name: Install php5-curl
+  apt: name=php5-curl state=present
+- name: Install Mysql
+  apt: name=php5-mysql state=present
+- name: Install Php Memcache
+  apt: name=php5-memcache state=present
+- name: Install Memcache
+  apt: name=memcached state=present
+- name: Install curl
+  apt: name=curl state=present
+- name: Start Nginx Service
+  service: name=nginx state=started enabled=yes
+- name: Start Memcached Service
+  service: name=memcached state=started enabled=yes
+- name: Copy sshd
+  copy: src=sshd_config dest=/etc/ssh/sshd_config mode=0644
+- name: restart sshd
+  service: name=ssh state=restarted
+- name: Generating User
+  user: name=advsupport shell=/bin/bash comment="Support" uid=1040 group=admin password=$6$9og9Y7qjbGv$uFIc6VgsQvlYP9rPovkT7UKiVe5xSyVdEXQxhl2VQFPZj5k8huvnQOIWKj/p4t9gZ2CtJqGyBhJRnjIcq1RSz1
+- name: Copy Nginx Configuration
+  copy: src=default dest=/etc/nginx/sites-available mode=0644
+- name: restart Nginx
+  service: name=nginx state=restarted
